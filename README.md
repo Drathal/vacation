@@ -21,4 +21,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### run production
 
-    docker run -it --rm -p 80:80 --name markus-dethlefsen app
+    docker run -it --rm -p 80:80 --name vacation app
