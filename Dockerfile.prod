@@ -1,0 +1,22 @@
+# Stage 1 - build
+FROM node:8.9.4-alpine as builder
+
+ENV APPDIR /usr/app
+
+RUN mkdir $APPDIR
+WORKDIR $APPDIR
+ENV PATH $APPDIR/node_modules/.bin:$PATH
+
+ADD yarn.lock ./yarn.lock
+ADD package.json ./package.json
+RUN yarn
+
+ADD . $APPDIR
+
+RUN yarn build --production
+
+# Stage 2 - prod image
+FROM nginx:1.12-alpine
+COPY --from=builder /usr/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

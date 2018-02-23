@@ -1,0 +1,15 @@
+section {
+    margin: 4.5em 1em 1em 1em;
+}
+
+.right {
+    text-align: right;
+}
+
+.form button {
+    margin: 0.15em;
+}
+
+ form p[class] {
+     color: red;
+ }
