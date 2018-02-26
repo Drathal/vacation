@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import './App.css'
 import withTheme from '../../hoc/withTheme'
-import Approve from '../../containers/Approve'
+import { Approve } from '../../features/Approve'
 import { Employee } from '../../features/Employee'
 import { Vacation  } from '../../features/Vacation'
 import Menu from '../Menu'

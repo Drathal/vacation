@@ -2,11 +2,11 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form/immutable'
 import { Map } from 'immutable'
 
-import { diffDate, rangeString } from '../utils/date'
-import Approve from '../components/Approve'
-import { getRemainingHolydayById } from '../features/Vacation/redux/selectors'
-import { approveVacation, declineVacation } from '../features/Vacation/redux/actions'
-import { getFullNameById } from '../features/Employee/redux/selectors'
+import { diffDate, rangeString } from '../../utils/date'
+import Approve from '../../components/Approve'
+import { getRemainingHolydayById } from '../../features/Vacation/redux/selectors'
+import { approveVacation, declineVacation } from '../../features/Vacation/redux/actions'
+import { getFullNameById } from '../../features/Employee/redux/selectors'
 
 const vacationLength = vacation => diffDate(vacation.get('endDate'), vacation.get('startDate'))
 

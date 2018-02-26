@@ -2,13 +2,13 @@ import { createStore, /* applyMiddleware,*/ compose } from 'redux'
 import throttle from 'lodash.throttle'
 import { loadState, saveState } from './localStorage'
 import { fromJS } from 'immutable'
-import reducers from './reducers'
+import reducer from './reducer'
 
 // init store with localStorage or default values
 const persistedState = fromJS(loadState() || {})
 
 const store = createStore(
-    reducers,
+    reducer,
     persistedState,
     compose(
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
