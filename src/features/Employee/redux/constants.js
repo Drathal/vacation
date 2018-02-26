@@ -1,1 +1,1 @@
-export const ADD_USER = 'ADD_USER'
+export const EMPLOYEE_ADD = 'VM:EMPLOYEE_ADD'

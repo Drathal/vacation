@@ -1,1 +1,1 @@
-export { addUser } from './reducer'
+export { addEmployee } from './reducer'

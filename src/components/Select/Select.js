@@ -1,6 +1,6 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { compose, defaultProps, setDisplayName, setPropTypes, pure} from "recompose";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose';
 import Select from 'material-ui/Select'
 import { MenuItem } from 'material-ui/Menu'
 import { FormControl, FormHelperText } from 'material-ui/Form'
@@ -15,23 +15,23 @@ const customSelect = ({
     ...custom
 }) => (
     <FormControl fullWidth>
-        <InputLabel htmlFor="fromId">{label}</InputLabel>
+        <InputLabel htmlFor="fromId">{ label }</InputLabel>
         <Select
-            {...input}
-            onBlur={(event, index, value) => input.onChange(value)}
-            {...custom}
-            autoWidth={true}
+            { ...input }
+            onBlur={ (event, index, value) => input.onChange(value) }
+            { ...custom }
+            autoWidth={ true }
         >
-            {options.map(
-                ({ label, value }, index) => <MenuItem key={value} value={value}>{label}</MenuItem>)
+            { options.map(
+                ({ label, value }, index) => <MenuItem key={ value } value={ value }>{ label }</MenuItem>)
             }
         </Select>
-        <FormHelperText>{touched && error}</FormHelperText>
+        <FormHelperText>{ touched && error }</FormHelperText>
     </FormControl>
 )
 
 export default compose(
-    setDisplayName("customSelect"),
+    setDisplayName('customSelect'),
     setPropTypes({
         input: PropTypes.object,
         label: PropTypes.string,
@@ -42,7 +42,7 @@ export default compose(
         }).isRequired
     }),
     defaultProps({
-        meta: { touched: false, error: "" }
+        meta: { touched: false, error: '' }
     }),
     pure
-)(customSelect);
+)(customSelect)

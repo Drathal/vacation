@@ -1,41 +1,42 @@
-import { connect } from "react-redux"
-import { reduxForm } from "redux-form/immutable"
-import { Map } from "immutable"
+import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form/immutable'
+import { Map } from 'immutable'
 
 import { diffDate, rangeString } from '../utils/date'
-import { actions as vacationActions, getVacationDaysLeft } from "../reducers/vacation"
-import { getFullName } from "../reducers/employee"
-import Approve from "../components/Approve"
+import Approve from '../components/Approve'
+import { getRemainingHolydayById } from '../features/Vacation/redux/selectors'
+import { approveVacation, declineVacation } from '../features/Vacation/redux/actions'
+import { getFullNameById } from '../features/Employee/redux/selectors'
 
-// could be moved to reducers / selectors - Map section is hard to read -> refactor
+const vacationLength = vacation => diffDate(vacation.get('endDate'), vacation.get('startDate'))
+
+const vacationString = (state, vacation) =>
+    `${vacationLength(vacation)} / ${getRemainingHolydayById(state, vacation.get('fromId'))}`
+
+const mergeProperties = (state,vacation) => vacation.merge(
+    Map({
+        name: getFullNameById(state, vacation.get('fromId')),
+        vacationDays: vacationString(state, vacation),
+        period: rangeString(vacation.get('startDate'),vacation.get('endDate'))
+    })
+)
+
 const enrichEmployeeData = state =>
     state
         .get('vacations')
         .filter(vacation => vacation.get('approved') === null)
-        .map(vacation => vacation.merge(
-            Map({
-                name: getFullName(state.get('employees'), vacation.get('fromId')),
-                vacationDays:
-                    diffDate(vacation.get('endDate'), vacation.get('startDate'))
-                    + " / "
-                    + getVacationDaysLeft(state, vacation.get('fromId'))
-                ,
-                period: rangeString(vacation.get('startDate'),vacation.get('endDate'))
-            })
-        ))
+        .map(vacation => mergeProperties(state, vacation))
 
-// we could also inject translations from here. at the moment only title is "translated"
 const mapStateToProps = (state, ownProps) => ({
     data: enrichEmployeeData(state).toJS(),
-    title: "Urlaubsantrag"
+    title: 'Urlaubsantrag'
 })
 
 const mapDispatchToProps = dispatch => ({
-    onApprove: vacationId => dispatch(vacationActions.approve(vacationId)),
-    onDecline: vacationId => dispatch(vacationActions.decline(vacationId)),
+    onApprove: vacationId => dispatch(approveVacation(vacationId)),
+    onDecline: vacationId => dispatch(declineVacation(vacationId))
 })
 
-// connect should be composed -> refactor
 export default connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({ form: "approveForm" })(Approve)
+    reduxForm({ form: 'approveForm' })(Approve)
 )

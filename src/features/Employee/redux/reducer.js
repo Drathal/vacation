@@ -2,20 +2,32 @@ import uuid from 'uuid/v4'
 import { fromJS } from 'immutable'
 
 import createReducer from '../../../utils/createReducer'
-import { ADD_USER } from './constants'
+import { EMPLOYEE_ADD } from './constants'
 import initialState from './initialState'
 
 export const root = 'employees'
 
-export const addUser = payload => ({
-    type: ADD_USER,
+/**
+ * actions
+ */
+
+export const addEmployee = payload => ({
+    type: EMPLOYEE_ADD,
     payload
 })
 
-const reducerAdd = (state, { payload }) =>
+/**
+ * reducer functions
+ */
+
+export const reducerAdd = (state, { payload }) =>
     state.push(payload.set('uuid', uuid()))
 
+/**
+ * main reducer
+ */
+
 export default createReducer(fromJS(initialState), {
-    [ADD_USER]: reducerAdd
+    [EMPLOYEE_ADD]: reducerAdd
 })
 

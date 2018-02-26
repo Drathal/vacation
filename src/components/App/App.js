@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import './App.css'
-import Approve from '../../containers/Approve'
-import { Employee  } from '../../features/Employee'
-import Vacation from '../../containers/Vacation'
 import withTheme from '../../hoc/withTheme'
+import Approve from '../../containers/Approve'
+import { Employee } from '../../features/Employee'
+import { Vacation  } from '../../features/Vacation'
 import Menu from '../Menu'
 
-
-// Main Layout
 class App extends Component {
     render() {
         return (

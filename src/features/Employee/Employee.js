@@ -2,20 +2,20 @@ import { connect } from 'react-redux'
 import { reduxForm, reset } from 'redux-form/immutable'
 
 import Employee from '../../components/Employee'
-import { addUser } from './redux/actions'
+import { addEmployee } from './redux/actions'
 import validate from './validateForm'
 
 const mapStateToProps = state => ({
     title: 'User hinzufügen'
 })
 
-const addUserAndClearForm = dispatch => employee => {
-    dispatch(addUser(employee))
+const addEmployeeAndClearForm = dispatch => employee => {
+    dispatch(addEmployee(employee))
     dispatch(reset('employeeForm'))
 }
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: employee => addUserAndClearForm(dispatch)(employee)
+    onSubmit: employee => addEmployeeAndClearForm(dispatch)(employee)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(
