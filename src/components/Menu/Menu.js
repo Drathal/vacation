@@ -10,25 +10,25 @@ import { Done, Face, BeachAccess } from 'material-ui-icons'
 
 const styles = {
     flex: {
-      flex: 1,
+        flex: 1
     }
-};
+}
 
 // in real world link should be injected from the outside
-const MyLink = props => <Link {...props} />
+const MyLink = props => <Link { ...props } />
 
-const Menu = ({classes}) => (
+const Menu = ({ classes }) => (
     <AppBar>
         <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>Urlaubsplaner</Typography>
+            <Typography variant="title" color="inherit" className={ classes.flex }>Urlaubsplaner</Typography>
             <div>
-                <Button component={MyLink} color="inherit" to={'/'}><Done/></Button>
-                <Button component={MyLink} color="inherit" to={'/employee/add'}><Face/></Button>
-                <Button component={MyLink} color="inherit" to={'/vacation/add'}><BeachAccess /></Button>
+                <Button component={ MyLink } color="inherit" to={ '/' }><Done/></Button>
+                <Button component={ MyLink } color="inherit" to={ '/employee/add' }><Face/></Button>
+                <Button component={ MyLink } color="inherit" to={ '/vacation/add' }><BeachAccess /></Button>
             </div>
         </Toolbar>
     </AppBar>
-);
+)
 
 export default compose(
     setDisplayName('Menu'),

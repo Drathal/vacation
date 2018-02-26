@@ -1,8 +1,8 @@
 import { fromJS } from 'immutable'
 import uuid from 'uuid/v4'
 
-const id1 = uuid();
-const id2 = uuid();
+const id1 = uuid()
+const id2 = uuid()
 
 export default fromJS({
     employees: [
@@ -43,5 +43,5 @@ export default fromJS({
             endDate: '2018-07-13',
             approved: null
         }
-    ],
-});
+    ]
+})
