@@ -7,14 +7,16 @@ import TextField from '../TextField'
 import DatePicker from '../DatePicker'
 import Select from '../Select'
 
-// field should be an injected dependency
+const StartVacactionField = props => (<DatePicker { ...props } disablePast={ true } />)
+const EndVacactionField = props => (<DatePicker { ...props } disablePast={ true } />)
+
 const Vacation = ({ title, remainingHolydays, employeeSelectbox, selectedEmployee, handleSubmit, onSubmit }) => (
     <section>
         <h1>Urlaubsantrag</h1>
         <form onSubmit={ handleSubmit(onSubmit) }>
             <div><Field name="fromId" label="Mitarbeiter" options={ employeeSelectbox } component={ Select }/></div>
-            <div><Field name="startDate" label="Urlaubsanfang" component={ DatePicker }/></div>
-            <div><Field name="endDate" label="Urlaubsende" component={ DatePicker } /></div>
+            <div><Field name="startDate" label="Urlaubsanfang" component={ StartVacactionField }/></div>
+            <div><Field name="endDate" label="Urlaubsende" component={ props => (<EndVacactionField { ...props }/>) } /></div>
             <div><TextField label="Resturlaubstage" value={ remainingHolydays } /></div>
             <br />
             <div className={ 'right' }>

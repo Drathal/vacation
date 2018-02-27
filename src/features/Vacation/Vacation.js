@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { Map } from 'immutable'
 import { reduxForm, reset } from 'redux-form/immutable'
+import { push } from 'react-router-redux'
 
 import Vacations from '../../components/Vacation'
 import { addVacation } from './redux/actions'
@@ -25,6 +26,7 @@ const mapStateToProps = state => ({
 const addVacationAndClearForm = dispatch => vacation => {
     dispatch(addVacation(vacation))
     dispatch(reset('vacationForm'))
+    dispatch(push('/'))
 }
 
 const mapDispatchToProps = dispatch => ({
