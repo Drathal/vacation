@@ -10,9 +10,9 @@ import Select from '../Select'
 const StartVacactionField = props => (<DatePicker { ...props } disablePast={ true } />)
 const EndVacactionField = props => (<DatePicker { ...props } disablePast={ true } />)
 
-const Vacation = ({ title, remainingHolydays, employeeSelectbox, selectedEmployee, handleSubmit, onSubmit }) => (
+const Vacation = ({ title, remainingHolydays, employeeSelectbox, handleSubmit, onSubmit }) => (
     <section>
-        <h1>Urlaubsantrag</h1>
+        <h1>{ title }</h1>
         <form onSubmit={ handleSubmit(onSubmit) }>
             <div><Field name="fromId" label="Mitarbeiter" options={ employeeSelectbox } component={ Select }/></div>
             <div><Field name="startDate" label="Urlaubsanfang" component={ StartVacactionField }/></div>

@@ -5,13 +5,13 @@ import teal from 'material-ui/colors/teal'
 
 const theme = createMuiTheme({
     palette: {
-      primary: teal,
-    },
+        primary: teal
+    }
 })
 
 export default Component => props => (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={ theme }>
         <Reboot />
-        <Component {...props} />
+        <Component { ...props } />
     </MuiThemeProvider>
 )

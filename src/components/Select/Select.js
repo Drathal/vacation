@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose';
+import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
 import Select from 'material-ui/Select'
 import { MenuItem } from 'material-ui/Menu'
 import { FormControl, FormHelperText } from 'material-ui/Form'
