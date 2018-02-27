@@ -1,16 +1,8 @@
-import { Vacation } from './'
+import { asyncComponent } from 'react-async-component'
 
 export default {
-    path: '/',
+    path: '/vacation/add',
     name: 'Vacation',
-    childRoutes: [
-        [
-            {
-                path: 'vacation',
-                name: 'Vacation',
-                component: Vacation,
-                isIndex: true
-            }
-        ]
-    ]
+    icon: asyncComponent({ resolve: () => import('material-ui-icons/BeachAccess') }),
+    component: asyncComponent({ resolve: () => import('./Vacation') })
 }

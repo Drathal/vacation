@@ -1,16 +1,8 @@
-import { Employee } from './'
+import { asyncComponent } from 'react-async-component'
 
 export default {
-    path: '/',
+    path: '/employee/add',
     name: 'Employee',
-    childRoutes: [
-        [
-            {
-                path: 'employee',
-                name: 'Employee',
-                component: Employee,
-                isIndex: true
-            }
-        ]
-    ]
+    icon: asyncComponent({ resolve: () => import('material-ui-icons/Face') }),
+    component: asyncComponent({ resolve: () => import('./Employee') })
 }

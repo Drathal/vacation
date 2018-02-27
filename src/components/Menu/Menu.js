@@ -6,7 +6,7 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/IconButton'
-import { Done, Face, BeachAccess } from 'material-ui-icons'
+import routes from '../../routes'
 
 const styles = {
     flex: {
@@ -14,17 +14,20 @@ const styles = {
     }
 }
 
-// in real world link should be injected from the outside
 const MyLink = props => <Link { ...props } />
+
+const MenuItem = route => (
+    <Button component={ MyLink } color="inherit" to={ route.path }>
+        { <route.icon/> }
+    </Button>
+)
 
 const Menu = ({ classes }) => (
     <AppBar>
         <Toolbar>
             <Typography variant="title" color="inherit" className={ classes.flex }>Urlaubsplaner</Typography>
             <div>
-                <Button component={ MyLink } color="inherit" to={ '/' }><Done/></Button>
-                <Button component={ MyLink } color="inherit" to={ '/employee/add' }><Face/></Button>
-                <Button component={ MyLink } color="inherit" to={ '/vacation/add' }><BeachAccess /></Button>
+                { routes.map((route, i) => <MenuItem key={ i } { ...route } />) }
             </div>
         </Toolbar>
     </AppBar>
