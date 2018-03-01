@@ -4,6 +4,7 @@ import { reduxForm, reset } from 'redux-form/immutable'
 import { push } from 'react-router-redux'
 
 import Vacations from '../../components/Vacation'
+import { toJS } from '../../hoc/toJS'
 import { addVacation } from './redux/actions'
 import { getRemainingHolydayById } from './redux/selectors'
 import { getEmplyees } from '../../features/Employee/redux/selectors'
@@ -18,7 +19,7 @@ const employees2SelectboxOptions = employees =>
     )
 
 const mapStateToProps = state => ({
-    employeeSelectbox: employees2SelectboxOptions(getEmplyees(state)).toJS(),
+    employeeSelectbox: employees2SelectboxOptions(getEmplyees(state)),
     remainingHolydays: getRemainingHolydayById(state),
     title: 'Urlaubsantrag'
 })
@@ -34,5 +35,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({ form: 'vacationForm', validate })(Vacations)
+    reduxForm({ form: 'vacationForm', validate })(toJS(Vacations))
 )

@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form/immutable'
 import { Map } from 'immutable'
 
 import { diffDate, rangeString } from '../../utils/date'
+import { toJS } from '../../hoc/toJS'
 import Approve from '../../components/Approve'
 import { getRemainingHolydayById } from '../../features/Vacation/redux/selectors'
 import { approveVacation, declineVacation } from '../../features/Vacation/redux/actions'
@@ -38,5 +39,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({ form: 'approveForm' })(Approve)
+    reduxForm({ form: 'approveForm' })(toJS(Approve))
 )
