@@ -2,30 +2,29 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import './App.css'
-import Approve from '../../containers/Approve'
-import Employee from '../../containers/Employee'
-import Vacation from '../../containers/Vacation'
 import withTheme from '../../hoc/withTheme'
 import Menu from '../Menu'
+import routes from '../../routes'
 
-// config Containers
-const ApproveComp = props => (<Approve {...props} />)
-const EmployeeComp = props => (<Employee {...props} />)
-const VacationComp = props => (<Vacation {...props} />)
+const RouteItem = route => (
+    <Route
+        path={ route.path }
+        render={ props => (
+            <route.component { ...props } routes={ route.routes } />
+        ) }
+    />
+)
 
-// Main Layout
 class App extends Component {
     render() {
         return (
-            [
-                <Menu key={'1'}/>,
-                <Switch key={'2'}>
-                    <Route exact path={'/'} render={ApproveComp} />
-                    <Route exact path={'/employee/add'} render={EmployeeComp} />
-                    <Route exact path={'/vacation/add'} render={VacationComp}/>
+            <React.Fragment>
+                <Menu/>
+                <Switch>
+                    { routes.map((route, i) => <RouteItem key={ i } { ...route } />) }
                 </Switch>
-            ]
-        );
+            </React.Fragment>
+        )
     }
 }
 

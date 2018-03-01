@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { compose, defaultProps, setDisplayName, setPropTypes, pure } from "recompose"
-import TextField from "material-ui/TextField"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
+import TextField from 'material-ui/TextField'
 
 // config our textfields
 const customTextField = ({
@@ -11,16 +11,16 @@ const customTextField = ({
     ...custom
 }) => (
     <TextField
-        label={label}
-        {...input}
-        {...custom}
-        helperText={(touched && error) || ' '}
+        label={ label }
+        { ...input }
+        { ...custom }
+        helperText={ (touched && error) || ' ' }
         fullWidth
     />
 )
 
 export default compose(
-    setDisplayName("customTextField"),
+    setDisplayName('customTextField'),
     setPropTypes({
         input: PropTypes.object,
         label: PropTypes.string,
@@ -31,7 +31,7 @@ export default compose(
         }).isRequired
     }),
     defaultProps({
-        meta: { touched: false, error: "" }
+        meta: { touched: false, error: '' }
     }),
     pure
 )(customTextField)

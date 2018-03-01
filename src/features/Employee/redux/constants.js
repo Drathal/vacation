@@ -1,0 +1,1 @@
+export const EMPLOYEE_ADD = 'VM:EMPLOYEE_ADD'
