@@ -1,31 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import './App.css'
-import withTheme from '../../hoc/withTheme'
-import Menu from '../Menu'
-import routes from '../../routes'
+import { MainMenu } from '../../features/MainMenu'
 
 const RouteItem = route => (
-    <Route
-        path={ route.path }
-        render={ props => (
-            <route.component { ...props } routes={ route.routes } />
-        ) }
+    <Route path={ route.path } render={ props => (
+        <route.component { ...props } routes={ route.routes } />
+    ) }
     />
 )
 
-class App extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Menu/>
-                <Switch>
-                    { routes.map((route, i) => <RouteItem key={ i } { ...route } />) }
-                </Switch>
-            </React.Fragment>
-        )
-    }
-}
-
-export default withTheme(App)
+export default ({ routes }) => (
+    <React.Fragment>
+        <MainMenu/>
+        <Switch>
+            { routes.map((route, i) => <RouteItem key={ i } { ...route } />) }
+        </Switch>
+    </React.Fragment>
+)

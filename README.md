@@ -14,6 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### dev
 
     docker-compose up
+    docker-compose up --build (when package.json has changed)
 
 ### build production
 

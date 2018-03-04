@@ -1,12 +1,11 @@
 import React from 'react'
-import { compose, setDisplayName, pure } from 'recompose'
+import PropTypes from 'prop-types'
+import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
 import { withStyles } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/IconButton'
-import routes from '../../routes'
 
 const styles = {
     flex: {
@@ -14,20 +13,18 @@ const styles = {
     }
 }
 
-const MyLink = props => <Link { ...props } />
-
-const MenuItem = route => (
-    <Button component={ MyLink } color="inherit" to={ route.path }>
-        { <route.icon/> }
+const MenuButton = ({ path, icon: Icon, onMenuItemClick }) => (
+    <Button color="inherit" onClick={ e => onMenuItemClick(path) }>
+        <Icon/>
     </Button>
 )
 
-const Menu = ({ classes }) => (
+const Menu = ({ title, menuitems, classes, onMenuItemClick }) => (
     <AppBar>
         <Toolbar>
-            <Typography variant="title" color="inherit" className={ classes.flex }>Urlaubsplaner</Typography>
+            <Typography variant="title" color="inherit" className={ classes.flex }>{ title }</Typography>
             <div>
-                { routes.map((route, i) => <MenuItem key={ i } { ...route } />) }
+                { menuitems.map((props, i) => <MenuButton key={ i } { ...props } onMenuItemClick={ onMenuItemClick }/>) }
             </div>
         </Toolbar>
     </AppBar>
@@ -35,6 +32,21 @@ const Menu = ({ classes }) => (
 
 export default compose(
     setDisplayName('Menu'),
+    setPropTypes({
+        title: PropTypes.string.isRequired,
+        menuitems: PropTypes.arrayOf(
+            PropTypes.shape({
+                path: PropTypes.string.isRequired,
+                icon: PropTypes.func.isRequired
+            }).isRequired
+        ),
+        onMenuItemClick: PropTypes.func.isRequired
+    }),
+    defaultProps({
+        onMenuItemClick: f => f,
+        title: '#title#',
+        menuitems: []
+    }),
     pure,
     withStyles(styles)
 )(Menu)
