@@ -2,7 +2,16 @@
   "name": "vacationmanager",
   "version": "0.1.0",
   "license": "MIT",
-  "private": true,
+  "author": "Markus Dethlefsen <work@markus-dethlefsen.de> (https://drathal.github.io/)",
+  "scripts": {
+    "book": "start-storybook -p 6006",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "PUBLIC_URL=/vacation react-scripts build && gh-pages -d build",
+    "test": "react-scripts test --env=jsdom",
+    "lint": "eslint src",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@storybook/addon-info": "^3.3.14",
     "@storybook/addon-knobs": "^3.3.14",
@@ -37,12 +46,7 @@
     "storybook-readme": "^3.2.1",
     "uuid": "^3.2.1"
   },
-  "scripts": {
-    "book": "start-storybook -p 6006",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "lint": "eslint src",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }
