@@ -1,5 +1,7 @@
 # Vacation Manager
 
+A sample react.js application. Its my personal react playground. You can try it [here](https://drathal.github.io/vacation).
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## yarn
