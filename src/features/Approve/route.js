@@ -1,9 +1,10 @@
 import { asyncComponent } from 'react-async-component'
+import DoneIcon from 'material-ui-icons/Done'
 
 export default {
-    path: '/',
+    path: `${process.env.PUBLIC_URL}/`,
     name: 'Approve',
-    icon:  asyncComponent({ resolve: () => import('material-ui-icons/Done') }),
+    icon:  DoneIcon,
     component:  asyncComponent({ resolve: () => import('./Approve') }),
     isIndex: true,
     exact: true

@@ -1,8 +1,9 @@
 import { asyncComponent } from 'react-async-component'
+import FaceIcon from 'material-ui-icons/Face'
 
 export default {
-    path: '/employee/add',
+    path:  `${process.env.PUBLIC_URL}/employee/add`,
     name: 'Employee',
-    icon: asyncComponent({ resolve: () => import('material-ui-icons/Face') }),
+    icon: FaceIcon,
     component: asyncComponent({ resolve: () => import('./Employee') })
 }
