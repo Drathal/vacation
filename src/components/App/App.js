@@ -5,7 +5,7 @@ import './App.css'
 import { MainMenu } from '../../features/MainMenu'
 
 const RouteItem = route => (
-    <Route path={ route.path } render={ props => (
+    <Route path={ route.path } exact={ route.exact || false } render={ props => (
         <route.component { ...props } routes={ route.routes } />
     ) }
     />
