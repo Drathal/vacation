@@ -4,16 +4,16 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 
 import App from 'containers/App'
-import withTheme from 'hoc/withTheme'
+import withMUI from 'hoc/withMUI'
 import registerServiceWorker from 'config/registerServiceWorker'
 import store, { history } from 'config/store'
 
-const AppWithTheme = withTheme(App)
+const AppWithMUI = withMUI(App)
 
 render(
     <Provider store={ store }>
         <ConnectedRouter history={ history }>
-            <AppWithTheme/>
+            <AppWithMUI/>
         </ConnectedRouter>
     </Provider>
     , document.getElementById('root')

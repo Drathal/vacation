@@ -23,7 +23,6 @@ const customDatepicker = ({
             fullWidth
             label={ label }
             helperText={ (touched && error) || ' ' }
-            returnMoment={ false }
         />
     )}
 
