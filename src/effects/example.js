@@ -1,6 +1,5 @@
 import request from 'superagent'
 
-// example quick and dirty side effect (as middleware) - not used
 export default store => next => action => {
     next(action)
 

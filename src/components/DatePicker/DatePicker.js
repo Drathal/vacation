@@ -2,9 +2,9 @@ import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
+
 import { DatePicker } from 'material-ui-pickers'
 
-// configure our datepicker
 const customDatepicker = ({
     label,
     input: { onChange, value, onBlur, ...inputProps },
@@ -26,7 +26,7 @@ const customDatepicker = ({
             returnMoment={ false }
         />
     )}
-// labelFunc={ date => format(date, 'DD.MM.YYYY') }
+
 export default compose(
     setDisplayName('customDatepicker'),
     setPropTypes({

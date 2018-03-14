@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
+
 import TextField from 'material-ui/TextField'
 
-// config our textfields
 const customTextField = ({
     input,
     label,

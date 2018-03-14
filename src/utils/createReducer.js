@@ -1,4 +1,3 @@
-// this is to get rid of that switch statements in "normal" reducers
 export default (initialState, handlers) =>
     (state, action) => {
         if (state === undefined) {state = initialState}

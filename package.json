@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Markus Dethlefsen <work@markus-dethlefsen.de> (https://drathal.github.io/)",
   "scripts": {
-    "book": "start-storybook -p 6006",
+    "book": "NODE_PATH=src start-storybook -p 6006",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "PUBLIC_URL=/vacation react-scripts build && build-storybook -c .storybook -o ./build/book && gh-pages -d build",
@@ -20,8 +20,8 @@
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "lodash.throttle": "^4.1.1",
-    "material-ui": "^1.0.0-beta.35",
-    "material-ui-icons": "^1.0.0-beta.35",
+    "material-ui": "^1.0.0-beta.37",
+    "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-pickers": "^1.0.0-beta.15.1",
     "moment": "^2.20.1",
     "prop-types": "^15.6.1",
@@ -45,8 +45,16 @@
     "@storybook/addon-options": "^3.3.14",
     "@storybook/addon-storyshots": "^3.3.14",
     "@storybook/react": "^3.3.14",
+    "enzyme-to-json": "^3.3.1",
     "gh-pages": "^1.1.0",
+    "jest-enzyme": "^6.0.0",
+    "rc-util": "^4.4.0",
     "storybook-host": "^4.1.5",
     "storybook-readme": "^3.2.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

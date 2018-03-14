@@ -1,27 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
-import Button from 'material-ui/Button'
 import { Field } from 'redux-form/immutable'
-import TextField from '../TextField'
-import DatePicker from '../DatePicker'
+import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
+
+import Typography from 'material-ui/Typography'
+
+import { SendButton } from './Employee.styled'
+import TextField from 'components/TextField'
+import DatePicker from 'components/DatePicker'
 
 const BithdayField = props => (<DatePicker { ...props } disableFuture={ true } openToYearSelection={ true }/>)
 
 const Employee = ({ title, handleSubmit, onSubmit }) => (
-    <section>
-        <h1>Mitarbeiter hinzufügen</h1>
+    <React.Fragment>
+        <Typography variant="title" gutterBottom>{ title }</Typography>
         <form onSubmit={ handleSubmit(onSubmit) }>
             <div><Field name="firstname" component={ TextField } label="Name"/></div>
             <div><Field name="name" label="Nachname" component={ TextField } /></div>
             <div><Field name="birthdate" label="Geburtsdatum" component={ BithdayField }/></div>
             <div><Field name="vacationDays" label="Urlaubstage im Jahr" component={ TextField }/></div>
             <br />
-            <div className={ 'right' }>
-                <Button variant="raised" color="primary" type='submit'>Speichern</Button>
-            </div>
+            <SendButton>Speichern</SendButton>
         </form>
-    </section>
+    </React.Fragment>
 )
 
 // isRequired is not needed because of default props. but we want a "robust" component :D

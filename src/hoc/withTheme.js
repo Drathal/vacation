@@ -1,6 +1,6 @@
 import React from 'react'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import Reboot from 'material-ui/Reboot'
+import CssBaseline from 'material-ui/CssBaseline'
 import teal from 'material-ui/colors/teal'
 
 const theme = createMuiTheme({
@@ -11,7 +11,7 @@ const theme = createMuiTheme({
 
 export default Component => props => (
     <MuiThemeProvider theme={ theme }>
-        <Reboot />
+        <CssBaseline />
         <Component { ...props } />
     </MuiThemeProvider>
 )
