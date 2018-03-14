@@ -4,8 +4,8 @@
   "license": "MIT",
   "author": "Markus Dethlefsen <work@markus-dethlefsen.de> (https://drathal.github.io/)",
   "scripts": {
-    "book": "NODE_PATH=src start-storybook -p 6006",
-    "deploy": "NODE_PATH=src PUBLIC_URL=/vacation react-scripts build && NODE_PATH=src build-storybook -c .storybook -o ./build/book && gh-pages -d build",
+    "book": "start-storybook -p 6006",
+    "deploy": "PUBLIC_URL=/vacation react-scripts build && build-storybook -c .storybook -o ./build/book && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
