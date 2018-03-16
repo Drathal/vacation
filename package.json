@@ -35,26 +35,19 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "@storybook/addons": "3.4.0-rc.2",
     "@storybook/addon-info": "^3.4.0-rc.2",
     "@storybook/addon-knobs": "^3.4.0-rc.2",
     "@storybook/addon-options": "^3.4.0-rc.2",
     "@storybook/addon-storyshots": "^3.4.0-rc.2",
+    "@storybook/addons": "3.4.0-rc.2",
     "@storybook/react": "^3.4.0-rc.2",
-    "prop-types": "^15.6.1",
-    "raw-loader": "^0.5.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
     "gh-pages": "^1.1.0",
-    "jest-enzyme": "^6.0.0",
-    "rc-util": "^4.4.0",
+    "prop-types": "^15.6.1",
+    "raw-loader": "^0.5.1",
     "storybook-host": "^4.1.5",
-    "storybook-readme": "^3.3.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "storybook-readme": "^3.3.0"
   }
 }
