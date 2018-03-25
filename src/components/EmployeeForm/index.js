@@ -1,1 +1,1 @@
-export { default } from './EmployeeFormHoc.js'
+export { default } from './EmployeeFormRender.js'

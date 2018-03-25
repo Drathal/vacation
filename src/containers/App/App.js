@@ -14,11 +14,10 @@ const mapMenuItems = routes => routes.map(
     })
 )
 
-const RouteItem = route => (
-    <Route path={ route.path } exact={ route.exact || false } render={ props => (
-        <route.component { ...props } routes={ route.routes } />
-    ) }
-    />
+const RouteItem = ({ path,exact,routes, component: Component }) => (
+    <Route path={ path } exact={ exact || false } render={ props => (
+        <Component { ...props } routes={ routes } />
+    ) }/>
 )
 
 const mainMenuItems = mapMenuItems(routes)
