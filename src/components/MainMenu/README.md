@@ -19,8 +19,8 @@ import MainMenu from './components/MainMenu'
 
 ## Props
 
-|  propName   |                       propType                       |  default   | required |                  description                   |
-| ----------- | ---------------------------------------------------- | ---------- | -------- | ---------------------------------------------- |
-| `title`     | `string`                                             | `#title#`  | 🚫        | Text to display ad title                       |
-| `onMenuItemClick`      | `func`                                     | `f => f`     | 🚫        | function to be executed on menu button click, will receive path to route to |
-| `menuitems`  | `arrayOf[{ icon, path }]`             | `[]` | 🚫        | array of menu items. <br/>path: will be supplied to onMenuItemClick. <br/>icon : a icon componeny  |
+|     propName      |         propType          |  default  | required |                                            description                                            |
+| ----------------- | ------------------------- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `title`           | `string`                  | `#title#` | 🚫        | Text to display ad title                                                                          |
+| `onMenuItemClick` | `func`                    | `f => f`  | 🚫        | function to be executed on menu button click, will receive path to route to                       |
+| `menuitems`       | `arrayOf[{ icon, path }]` | `[]`      | 🚫        | array of menu items. <br/>path: will be supplied to onMenuItemClick. <br/>icon : a icon componeny |

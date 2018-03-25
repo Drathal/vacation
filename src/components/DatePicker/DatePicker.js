@@ -1,44 +1,33 @@
 import React from 'react'
-import moment from 'moment'
+
 import PropTypes from 'prop-types'
-import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recompose'
+import { compose, defaultProps, setDisplayName, setPropTypes } from 'recompose'
 
 import { DatePicker } from 'material-ui-pickers'
 
 const customDatepicker = ({
-    label,
-    input: { onChange, value, onBlur, ...inputProps },
-    meta: { touched, error },
-    ...custom
-}) => {
-    return(
-        <DatePicker
-            clearable
-            keyboard
-            format={ 'DD.MM.YYYY' }
-            { ...inputProps }
-            { ...custom }
-            value={ value ? moment(value, inputProps.format || 'DD.MM.YYYY') : null }
-            onChange={ value => onChange(value) }
-            fullWidth
-            label={ label }
-            helperText={ (touched && error) || ' ' }
-        />
-    )}
+    errorText,
+    ...props
+}) => (
+
+    <DatePicker
+        error={ !!errorText }
+        helperText={ (errorText && errorText) || ' ' }
+        keyboard
+        fullWidth
+        { ...props }
+    />
+
+)
 
 export default compose(
     setDisplayName('customDatepicker'),
     setPropTypes({
-        input: PropTypes.object,
-        label: PropTypes.string,
-        custom: PropTypes.object,
-        meta: PropTypes.shape({
-            touched: PropTypes.bool,
-            error: PropTypes.string
-        }).isRequired
+        onChange: PropTypes.func.isRequired,
+        format: PropTypes.string.isRequired
     }),
     defaultProps({
-        meta: { touched: false, error: '' }
-    }),
-    pure
+        onChange: x => console.info(x),
+        format: 'DD.MM.YYYY'
+    })
 )(customDatepicker)

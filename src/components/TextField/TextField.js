@@ -5,33 +5,24 @@ import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recom
 import TextField from 'material-ui/TextField'
 
 const customTextField = ({
-    input,
-    label,
-    meta: { touched, error },
+    errorText,
     ...custom
 }) => (
     <TextField
-        label={ label }
-        { ...input }
-        { ...custom }
-        helperText={ (touched && error) || ' ' }
         fullWidth
+        error={ !!errorText }
+        helperText={ (errorText && errorText) || ' ' }
+        { ...custom }
     />
 )
 
 export default compose(
     setDisplayName('customTextField'),
     setPropTypes({
-        input: PropTypes.object,
-        label: PropTypes.string,
-        custom: PropTypes.object,
-        meta: PropTypes.shape({
-            touched: PropTypes.bool,
-            error: PropTypes.string
-        }).isRequired
+        onChange: PropTypes.func.isRequired
     }),
     defaultProps({
-        meta: { touched: false, error: '' }
+        onChange: x => x
     }),
     pure
 )(customTextField)
