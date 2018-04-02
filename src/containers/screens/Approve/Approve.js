@@ -14,13 +14,14 @@ const vacationLength = vacation => diffDate(vacation.get('endDate'), vacation.ge
 const vacationString = (state, vacation) =>
     `${vacationLength(vacation)} / ${getRemainingHolydayById(state, vacation.get('fromId'))}`
 
-const mergeProperties = (state,vacation) => vacation.merge(
-    Map({
-        name: getFullNameById(state, vacation.get('fromId')),
-        vacationDays: vacationString(state, vacation),
-        period: rangeString(vacation.get('startDate'),vacation.get('endDate'))
-    })
-)
+const mergeProperties = (state, vacation) =>
+    vacation.merge(
+        Map({
+            name: getFullNameById(state, vacation.get('fromId')),
+            vacationDays: vacationString(state, vacation),
+            period: rangeString(vacation.get('startDate'), vacation.get('endDate'))
+        })
+    )
 
 const enrichEmployeeData = state =>
     state
@@ -38,6 +39,4 @@ const mapDispatchToProps = dispatch => ({
     onDecline: vacationId => dispatch(declineVacation(vacationId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({ form: 'approveForm' })(toJS(Approve))
-)
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'approveForm' })(toJS(Approve)))

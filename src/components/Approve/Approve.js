@@ -19,14 +19,38 @@ const styles = theme => ({
 })
 
 const Item = ({ classes, index, uuid, name, period, vacationDays, onApprove, onDecline }) => (
-    <FormSection className={ 'formRow' } name={ index.toString() }>
-        <Grid container spacing={ 24 }>
-            <Grid item xs={ 12 } sm={ 3 }><TextField label="Name" value={ name } /></Grid>
-            <Grid item xs={ 6 } sm={ 4 }><TextField label="Zeitraum" value={ period }/></Grid>
-            <Grid item xs={ 2 } sm={ 2 }><TextField label="Urlaubstage" value={ vacationDays } /></Grid>
-            <Grid item xs={ 4 } sm={ 3 } className={ classes.right }>
-                <Button type="button" onClick={ () => onDecline(uuid) } variant="fab" mini color="secondary" aria-label="decline"><Clear /></Button>
-                <Button type="button" onClick={ () => onApprove(uuid) } variant="fab" mini color="primary" aria-label="approve"><Done /></Button>
+    <FormSection className={'formRow'} name={index.toString()}>
+        <Grid container spacing={24}>
+            <Grid item xs={12} sm={3}>
+                <TextField label="Name" value={name} />
+            </Grid>
+            <Grid item xs={6} sm={4}>
+                <TextField label="Zeitraum" value={period} />
+            </Grid>
+            <Grid item xs={2} sm={2}>
+                <TextField label="Urlaubstage" value={vacationDays} />
+            </Grid>
+            <Grid item xs={4} sm={3} className={classes.right}>
+                <Button
+                    type="button"
+                    onClick={() => onDecline(uuid)}
+                    variant="fab"
+                    mini
+                    color="secondary"
+                    aria-label="decline"
+                >
+                    <Clear />
+                </Button>
+                <Button
+                    type="button"
+                    onClick={() => onApprove(uuid)}
+                    variant="fab"
+                    mini
+                    color="primary"
+                    aria-label="approve"
+                >
+                    <Done />
+                </Button>
             </Grid>
             <Hidden smUp>&nbsp;</Hidden>
         </Grid>
@@ -34,12 +58,12 @@ const Item = ({ classes, index, uuid, name, period, vacationDays, onApprove, onD
 )
 
 const Approve = ({ title, data, ...props }) => (
-    <React.Fragment >
-        <Typography variant="title" gutterBottom>{ title }</Typography>
-        <form className={ 'form' }>
-            { data.map(
-                (itemData, index) => (<Item key={ itemData.uuid } index={ index } { ...props } { ...itemData } />)
-            ) }
+    <React.Fragment>
+        <Typography variant="title" gutterBottom>
+            {title}
+        </Typography>
+        <form className={'form'}>
+            {data.map((itemData, index) => <Item key={itemData.uuid} index={index} {...props} {...itemData} />)}
         </form>
     </React.Fragment>
 )
@@ -66,5 +90,3 @@ export default compose(
     }),
     withStyles(styles, { withTheme: true })
 )(Approve)
-
-

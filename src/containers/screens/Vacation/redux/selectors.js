@@ -1,10 +1,11 @@
 import { diffDate } from 'utils/date'
 
 export const getRemainingHolydayById = (state, employeeId = null) => {
-
     // check if we have a employeeId
     employeeId = employeeId || state.getIn(['form', 'vacationForm', 'values', 'fromId'])
-    if (!employeeId) {return ''}
+    if (!employeeId) {
+        return ''
+    }
 
     // get max vacation days for employee
     const baseDays = state
@@ -21,7 +22,7 @@ export const getRemainingHolydayById = (state, employeeId = null) => {
     let currentDays = 0
     if (startDate && endDate) {
         currentDays = diffDate(endDate, startDate)
-        currentDays = (currentDays > 0) ? currentDays : 0
+        currentDays = currentDays > 0 ? currentDays : 0
     }
 
     // go trough all accepted vacations and substract from max vacation days

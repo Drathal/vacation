@@ -5,6 +5,7 @@ export default compose(
     withHandlers({
         show: ({ element }) => ({ currentTarget }) => element(currentTarget),
         hide: ({ element }) => e => element(null),
-        toggle: ({ element }) => ({ currentTarget }) => element(currentElement => currentElement ? null : currentTarget)
+        toggle: ({ element }) => ({ currentTarget }) =>
+            element(currentElement => (currentElement ? null : currentTarget))
     })
 )

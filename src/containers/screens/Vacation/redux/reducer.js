@@ -34,29 +34,16 @@ export const declineVacation = uuid => ({
  * reducer functions
  */
 
-export const reducerAdd = (state, { payload }) =>
-    state.push(
-        payload
-            .set('uuid', uuid())
-            .set('approved', null)
-    )
+export const reducerAdd = (state, { payload }) => state.push(payload.set('uuid', uuid()).set('approved', null))
 
 export const reducerApprove = (state, { payload: { uuid } }) =>
-    state.update(
-        state.findIndex(item => item.get('uuid') === uuid),
-        item => item.set('approved', true)
-    )
+    state.update(state.findIndex(item => item.get('uuid') === uuid), item => item.set('approved', true))
 
 export const reducerDecline = (state, { payload: { uuid } }) =>
-    state.delete(
-        state.findIndex(item => item.get('uuid') === uuid)
-    )
+    state.delete(state.findIndex(item => item.get('uuid') === uuid))
 
 export const reducerDeclineAlternative = (state, { payload: { uuid } }) =>
-    state.update(
-        state.findIndex(item => item.get('uuid') === uuid),
-        item => item.set('approved', false)
-    )
+    state.update(state.findIndex(item => item.get('uuid') === uuid), item => item.set('approved', false))
 
 /**
  * main reducer

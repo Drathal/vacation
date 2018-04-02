@@ -16,16 +16,18 @@ const store = createStore(
     persistedState,
     compose(
         applyMiddleware(routerMiddleware(history)),
-        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
     )
 )
 
-store.subscribe(throttle(() => {
-    const state = store.getState().toJS()
-    saveState({
-        employees: state.employees,
-        vacations: state.vacations
-    })
-}, 1000))
+store.subscribe(
+    throttle(() => {
+        const state = store.getState().toJS()
+        saveState({
+            employees: state.employees,
+            vacations: state.vacations
+        })
+    }, 1000)
+)
 
 export default store

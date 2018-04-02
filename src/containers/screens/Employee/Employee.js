@@ -18,6 +18,4 @@ const mapDispatchToProps = dispatch => ({
     onSubmit: employee => addEmployeeAndClearForm(dispatch)(employee)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({ form: 'employeeForm', validate })(Employee)
-)
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'employeeForm', validate })(Employee))

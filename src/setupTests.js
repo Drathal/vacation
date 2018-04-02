@@ -11,4 +11,3 @@ jest.mock('material-ui/Modal', () => {
         return props.children
     }
 })
-

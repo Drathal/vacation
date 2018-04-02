@@ -7,14 +7,13 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 
 const ThemeDecorator = StoryComponent => (
-    <MuiThemeProvider theme={ createMuiTheme({}) }>
+    <MuiThemeProvider theme={createMuiTheme({})}>
         <CssBaseline />
         <StoryComponent />
     </MuiThemeProvider>
 )
 
 export default (storyName, storyModule, readme, useTheme = true) => {
-
     const stories = storiesOf(storyName, storyModule)
 
     if (process.env.NODE_ENV === 'test') {
@@ -26,14 +25,16 @@ export default (storyName, storyModule, readme, useTheme = true) => {
     return stories
         .addDecorator(ThemeDecorator)
         .addDecorator(withKnobs)
-        .addDecorator(host({
-            title: `${storyName} component`,
-            align: 'center middle',
-            height: '100%',
-            width: '100%',
-            backdrop: '#eee',
-            background: '#fff',
-            border: '1px solid #ccc'
-        }))
+        .addDecorator(
+            host({
+                title: `${storyName} component`,
+                align: 'center middle',
+                height: '100%',
+                width: '100%',
+                backdrop: '#eee',
+                background: '#fff',
+                border: '1px solid #ccc'
+            })
+        )
         .addDecorator(withReadme(readme || ''))
 }

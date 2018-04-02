@@ -12,11 +12,11 @@ const AppWithMUI = withMUI(App)
 render(
     <Provider>
         <Router>
-            <AppWithMUI/>
+            <AppWithMUI />
         </Router>
-    </Provider>
+    </Provider>,
 
-    , document.getElementById('root')
+    document.getElementById('root')
 )
 
 registerServiceWorker()

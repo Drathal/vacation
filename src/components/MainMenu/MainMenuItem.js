@@ -4,18 +4,17 @@ import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recom
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 
 const MainMenuItem = ({ label, icon: Icon, ...props }) => (
-    <ListItem button { ...props }>
+    <ListItem button {...props}>
         <ListItemIcon>
             <Icon />
         </ListItemIcon>
-        <ListItemText primary={ label } />
+        <ListItemText primary={label} />
     </ListItem>
 )
 
 export default compose(
     setDisplayName('MainMenuItem'),
-    setPropTypes({
-    }),
+    setPropTypes({}),
     defaultProps({
         label: '#label#'
     }),

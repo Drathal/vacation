@@ -9,16 +9,26 @@ import { SendButton } from './Employee.styled'
 import TextField from 'components/TextField'
 import DatePicker from 'components/DatePicker'
 
-const BithdayField = props => (<DatePicker { ...props } disableFuture={ true } openToYearSelection={ true }/>)
+const BithdayField = props => <DatePicker {...props} disableFuture={true} openToYearSelection={true} />
 
 const Employee = ({ title, handleSubmit, onSubmit }) => (
     <React.Fragment>
-        <Typography variant="title" gutterBottom>{ title }</Typography>
-        <form onSubmit={ handleSubmit(onSubmit) }>
-            <div><Field name="firstname" component={ TextField } label="Name"/></div>
-            <div><Field name="name" label="Nachname" component={ TextField } /></div>
-            <div><Field name="birthdate" label="Geburtsdatum" component={ BithdayField }/></div>
-            <div><Field name="vacationDays" label="Urlaubstage im Jahr" component={ TextField }/></div>
+        <Typography variant="title" gutterBottom>
+            {title}
+        </Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+                <Field name="firstname" component={TextField} label="Name" />
+            </div>
+            <div>
+                <Field name="name" label="Nachname" component={TextField} />
+            </div>
+            <div>
+                <Field name="birthdate" label="Geburtsdatum" component={BithdayField} />
+            </div>
+            <div>
+                <Field name="vacationDays" label="Urlaubstage im Jahr" component={TextField} />
+            </div>
             <br />
             <SendButton>Speichern</SendButton>
         </form>

@@ -36,30 +36,30 @@ const styles = theme => ({
     }
 })
 
-export const MainMenuButton = props => (<IconButton color="inherit" { ...props }><MenuIcon /></IconButton>)
+export const MainMenuButton = props => (
+    <IconButton color="inherit" {...props}>
+        <MenuIcon />
+    </IconButton>
+)
 
-export const Title = ({ children }) => (<Typography variant="title" color="inherit">{ children }</Typography>)
+export const Title = ({ children }) => (
+    <Typography variant="title" color="inherit">
+        {children}
+    </Typography>
+)
 
-const ContentComponent = ({ children, classes }) => (<main className={ classes.content }>{ children }</main>)
+const ContentComponent = ({ children, classes }) => <main className={classes.content}>{children}</main>
 export const Content = withStyles(styles, { withTheme: true })(ContentComponent)
 
 const LeftMenuComponent = ({ children, classes }) => (
-    <Drawer variant="permanent" className={ classes.drawer }>
-        { children }
+    <Drawer variant="permanent" className={classes.drawer}>
+        {children}
     </Drawer>
 )
 export const LeftMenu = withStyles(styles, { withTheme: true })(LeftMenuComponent)
 
-const AppBarComponent = ({ children, classes }) => (
-    <AppBar className={ classes.appBar }>
-        { children }
-    </AppBar>
-)
+const AppBarComponent = ({ children, classes }) => <AppBar className={classes.appBar}>{children}</AppBar>
 export const ApplicationBar = withStyles(styles, { withTheme: true })(AppBarComponent)
 
-const WrapperComponent = ({ classes, children }) => (
-    <div className={ classes.wrapper }>
-        { children }
-    </div>
-)
+const WrapperComponent = ({ classes, children }) => <div className={classes.wrapper}>{children}</div>
 export const Wrapper = withStyles(styles, { withTheme: true })(WrapperComponent)

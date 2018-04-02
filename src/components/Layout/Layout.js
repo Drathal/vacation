@@ -24,19 +24,19 @@ const Layout = ({
     <Wrapper>
         <ApplicationBar>
             <Toolbar>
-                <MainMenuButton onClick={ toggleMainMenu }/>
-                <Title>{ title }</Title>
-                <MenuButton icon={ AccountCircle } onSelect={ onAccountMenuClick }>
-                    <MenuItem value={ '/login' }>Login (not now)</MenuItem>
+                <MainMenuButton onClick={toggleMainMenu} />
+                <Title>{title}</Title>
+                <MenuButton icon={AccountCircle} onSelect={onAccountMenuClick}>
+                    <MenuItem value={'/login'}>Login (not now)</MenuItem>
                 </MenuButton>
             </Toolbar>
         </ApplicationBar>
-        <MainMenu open={ !!anchorElementMainMenu } onSelect={ onMainMenuItemClick } hide={ hideMainMenu } >
-            { mainMenuItems.map((item, i) => <MainMenuItem key={ i } { ...{ value:item.path, icon:item.icon, label:item.name  } } />) || null }
+        <MainMenu open={!!anchorElementMainMenu} onSelect={onMainMenuItemClick} hide={hideMainMenu}>
+            {mainMenuItems.map((item, i) => (
+                <MainMenuItem key={i} {...{ value: item.path, icon: item.icon, label: item.name }} />
+            )) || null}
         </MainMenu>
-        <Content>
-            { children }
-        </Content>
+        <Content>{children}</Content>
     </Wrapper>
 )
 
@@ -45,11 +45,13 @@ export default compose(
     withElementToggle('MainMenu'),
     setPropTypes({
         title: PropTypes.string.isRequired,
-        mainMenuItems: PropTypes.arrayOf(PropTypes.shape({
-            path: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            icon: PropTypes.func
-        })),
+        mainMenuItems: PropTypes.arrayOf(
+            PropTypes.shape({
+                path: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                icon: PropTypes.func
+            })
+        ),
         toggleMainMenu: PropTypes.func.isRequired,
         hideMainMenu: PropTypes.func.isRequired
     }),

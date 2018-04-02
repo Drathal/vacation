@@ -21,24 +21,22 @@ const initalState = {
 }
 
 export default class Employee extends Container {
-    constructor () {
+    constructor() {
         super()
         this.state = initalState
     }
     add = employee => {
-        this.setState(
-            {
-                employees: [
-                    ...this.state.employees,
-                    {
-                        uuid: uuid(),
-                        firstname: employee.firstname,
-                        name: employee.name,
-                        birthdate: employee.birthdate,
-                        vacationDays: employee.vacationDays
-                    }
-                ]
-            }
-        )
+        this.setState({
+            employees: [
+                ...this.state.employees,
+                {
+                    uuid: uuid(),
+                    firstname: employee.firstname,
+                    name: employee.name,
+                    birthdate: employee.birthdate,
+                    vacationDays: employee.vacationDays
+                }
+            ]
+        })
     }
 }

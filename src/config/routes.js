@@ -10,7 +10,7 @@ export default [
     //employeeRoute
     //vacationRoute
     {
-        path:  `${process.env.PUBLIC_URL}/test`,
+        path: `${process.env.PUBLIC_URL}/test`,
         name: 'Employee',
         icon: FaceIcon,
         component: asyncComponent({ resolve: () => import('components/EmployeeForm') })

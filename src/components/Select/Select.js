@@ -7,26 +7,17 @@ import { MenuItem } from 'material-ui/Menu'
 import { FormControl, FormHelperText } from 'material-ui/Form'
 import { InputLabel } from 'material-ui/Input'
 
-const customSelect = ({
-    input,
-    label,
-    options,
-    meta: { touched, error },
-    ...custom
-}) => (
+const customSelect = ({ input, label, options, meta: { touched, error }, ...custom }) => (
     <FormControl fullWidth>
-        <InputLabel htmlFor="fromId">{ label }</InputLabel>
-        <Select
-            { ...input }
-            onBlur={ (event, index, value) => input.onChange(value) }
-            { ...custom }
-            autoWidth={ true }
-        >
-            { options.map(
-                ({ label, value }, index) => <MenuItem key={ value } value={ value }>{ label }</MenuItem>)
-            }
+        <InputLabel htmlFor="fromId">{label}</InputLabel>
+        <Select {...input} onBlur={(event, index, value) => input.onChange(value)} {...custom} autoWidth={true}>
+            {options.map(({ label, value }, index) => (
+                <MenuItem key={value} value={value}>
+                    {label}
+                </MenuItem>
+            ))}
         </Select>
-        <FormHelperText>{ touched && error }</FormHelperText>
+        <FormHelperText>{touched && error}</FormHelperText>
     </FormControl>
 )
 

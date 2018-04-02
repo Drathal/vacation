@@ -14,10 +14,10 @@ const theme = createMuiTheme({
 })
 
 export default Component => props => (
-    <MuiPickersUtilsProvider utils={ DateFnsUtils } locale={ deLocale }>
-        <MuiThemeProvider theme={ theme }>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={deLocale}>
+        <MuiThemeProvider theme={theme}>
             <CssBaseline />
-            <Component { ...props } />
+            <Component {...props} />
         </MuiThemeProvider>
     </MuiPickersUtilsProvider>
 )

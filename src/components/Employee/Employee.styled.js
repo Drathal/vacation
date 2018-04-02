@@ -10,8 +10,10 @@ const styles = theme => ({
 })
 
 const SendButtonComponent = ({ children, classes }) => (
-    <div className={ classes.right }>
-        <Button variant="raised" color="primary" type='submit' value="ok">{ children }</Button>
+    <div className={classes.right}>
+        <Button variant="raised" color="primary" type="submit" value="ok">
+            {children}
+        </Button>
     </div>
 )
 

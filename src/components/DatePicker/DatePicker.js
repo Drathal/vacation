@@ -5,19 +5,8 @@ import { compose, defaultProps, setDisplayName, setPropTypes } from 'recompose'
 
 import { DatePicker } from 'material-ui-pickers'
 
-const customDatepicker = ({
-    errorText,
-    ...props
-}) => (
-
-    <DatePicker
-        error={ !!errorText }
-        helperText={ (errorText && errorText) || ' ' }
-        keyboard
-        fullWidth
-        { ...props }
-    />
-
+const customDatepicker = ({ errorText, ...props }) => (
+    <DatePicker error={!!errorText} helperText={(errorText && errorText) || ' '} keyboard fullWidth {...props} />
 )
 
 export default compose(

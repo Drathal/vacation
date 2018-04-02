@@ -11,8 +11,8 @@ import { getEmplyees } from 'containers/screens/Employee/redux/selectors'
 import validate from './validateForm'
 
 const employees2SelectboxOptions = employees =>
-    employees.map(
-        employee => Map({
+    employees.map(employee =>
+        Map({
             label: `${employee.get('firstname')} ${employee.get('name')}`,
             value: employee.get('uuid')
         })

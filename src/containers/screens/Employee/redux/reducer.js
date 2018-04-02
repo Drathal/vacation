@@ -20,8 +20,7 @@ export const addEmployee = payload => ({
  * reducer functions
  */
 
-export const reducerAdd = (state, { payload }) =>
-    state.push(payload.set('uuid', uuid()))
+export const reducerAdd = (state, { payload }) => state.push(payload.set('uuid', uuid()))
 
 /**
  * main reducer
@@ -30,4 +29,3 @@ export const reducerAdd = (state, { payload }) =>
 export default createReducer(fromJS(initialState), {
     [EMPLOYEE_ADD]: reducerAdd
 })
-

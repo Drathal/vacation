@@ -4,24 +4,38 @@ function isTruthy(value){
     return ['1', 'true'].indexOf(value.toLowerCase()) >= 0;
 }
 
-// Warnings are errors in CI
+// Warnings are errors in CI mode
 var OFF = 'off';
 var ERROR = 'error';
 var WARNING = isTruthy(process.env.CI) ? ERROR : 'warn';
 
-module.exports ={
-    "extends": "react-app",
+module.exports = {
+    "plugins": [
+        "prettier",        
+    ],
+    "extends": [
+        "react-app",
+        "prettier",
+        "prettier/react"        
+    ],
     "env": {
-    "browser": true,
-    "jest": true
-  },
-    "globals": {
-        "STORYBOOK_REACT_CLASSES": true,
-        "it": false,
-        "expect": false,
-        "jasmine": false
+        "es6": true,
+        "browser": true,
+        "jest": true,
+        "jasmine": true
     },
+    "globals": {},
     "rules": {
+        "prettier/prettier" : [
+            "error",
+            {
+                "trailingComma": "none",
+                "singleQuote": true,
+                "printWidth": 120,
+                "semi" : false,
+                "tabWidth": 4           
+            }
+        ],
         "no-unused-vars": [WARNING,
             {
                 "vars": "all",
@@ -41,9 +55,7 @@ module.exports ={
                 ]
             }
         ],
-        "arrow-parens": [WARNING,
-            "as-needed"
-        ],
+        "no-mixed-operators": ERROR,
         "no-console": [WARNING,
             {
                 "allow": [
@@ -53,58 +65,7 @@ module.exports ={
                 ]
             }
         ],
-        "comma-dangle": [WARNING
-        ],
-        "quotes": [WARNING,
-            "single"
-        ],
-        "curly": WARNING,
-        "eqeqeq": [OFF
-        ],
-        "semi": [WARNING,
-            "never"
-        ],
-        "no-extra-semi": OFF,
-        "space-in-parens": [WARNING,
-            "never"
-        ],
-        "object-curly-spacing": [WARNING,
-            "always"
-        ],
-        "indent": [WARNING,
-            4,
-            {
-                "CallExpression": {
-                    "arguments": "first"
-                },
-                "SwitchCase": 1,
-                "MemberExpression": 1,
-                "FunctionDeclaration": {
-                    "body": 1,
-                    "parameters": 2
-                },
-                "ArrayExpression": 1,
-                "ObjectExpression": 1
-            }
-        ],
-        "strict": [ERROR,
-            "never"
-        ],
-        "react/jsx-uses-react": ERROR,
-        "react/jsx-uses-vars": ERROR,
-        "react/react-in-jsx-scope": ERROR,
-        "react/jsx-curly-spacing": [WARNING,
-            {
-                "when": "always",
-                "allowMultiline": true,
-                "children": true,
-                "spacing": {
-                    "objectLiterals": "never"
-                }
-            }
-        ]
-    },
-    "plugins": [
-        "react"
-    ]
+        "eqeqeq": [OFF]
+
+    }
 }

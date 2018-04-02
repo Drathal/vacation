@@ -8,17 +8,10 @@ import MainMenu from './MainMenu'
 import MainMenuItem from './MainMenuItem'
 import readme from './README.md'
 
-getstory('MainMenu', module, readme)
-    .add(
-        'default',
-        () => (
-            <MainMenu open={ boolean('open', true) } onSelect={ action('onSelect') } hide={ action('willHide') } >
-                <MainMenuItem value={ '1' } icon={ AccountCircle } label={ text('label1', 'MenuItem1') } />
-                <MainMenuItem value={ '2' } icon={ AccountCircle } label={ text('label2', 'MenuItem2') } />
-                <MainMenuItem value={ '3' } icon={ AccountCircle } label={ text('label3', 'MenuItem3') }/>
-            </MainMenu>
-        )
-    )
-
-
-
+getstory('MainMenu', module, readme).add('default', () => (
+    <MainMenu open={boolean('open', true)} onSelect={action('onSelect')} hide={action('willHide')}>
+        <MainMenuItem value={'1'} icon={AccountCircle} label={text('label1', 'MenuItem1')} />
+        <MainMenuItem value={'2'} icon={AccountCircle} label={text('label2', 'MenuItem2')} />
+        <MainMenuItem value={'3'} icon={AccountCircle} label={text('label3', 'MenuItem3')} />
+    </MainMenu>
+))

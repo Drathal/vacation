@@ -4,16 +4,8 @@ import { compose, defaultProps, setDisplayName, setPropTypes, pure } from 'recom
 
 import TextField from 'material-ui/TextField'
 
-const customTextField = ({
-    errorText,
-    ...custom
-}) => (
-    <TextField
-        fullWidth
-        error={ !!errorText }
-        helperText={ (errorText && errorText) || ' ' }
-        { ...custom }
-    />
+const customTextField = ({ errorText, ...custom }) => (
+    <TextField fullWidth error={!!errorText} helperText={(errorText && errorText) || ' '} {...custom} />
 )
 
 export default compose(
